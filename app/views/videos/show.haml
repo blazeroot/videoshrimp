@@ -1,0 +1,25 @@
+.container
+  .row.video-full{ 'data-video-id': @video.id }
+    .col-md-10
+      %h1= @video.name
+      %p.small
+        = link_to 'Back to videos' ,videos_path
+
+      - if @video.all_formats_encoded?
+        %video#my-video.video-js{:controls => "", "data-setup" => "{}", :height => "264", :preload => "auto", :width => "640"}
+          %source{:src => @video.mp4_file.url, :type => "video/mp4"}
+          %source{:src => @video.webm_file.url, :type => "video/webm"}
+          %source{:src => @video.ogg_file.url, :type => "video/ogg"}
+          %p.vjs-no-js
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            %a{:href => "http://videojs.com/html5-video-support/", :target => "_blank"} supports HTML5 video
+      - else
+        %p Video is still being encoded.
+    .col-md-2
+      %h1
+        %span.likes-count= @video.likes
+        %span.glyphicon.glyphicon-heart
+    .col-md-12
+      %hr
+      = link_to 'Like', video_like_path(@video), class: 'btn btn-success', remote: true
+      = link_to 'Dislike', video_dislike_path(@video), class: 'btn btn-danger', remote: true

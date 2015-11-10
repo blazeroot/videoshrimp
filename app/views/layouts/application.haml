@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title VideoShrimp
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    '//vjs.zencdn.net/5.0.2/video-js.css'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag '//cdn.pubnub.com/pubnub-dev.js'
+    = csrf_meta_tags
+  %body{'data-no-turbolink': true}
+    - if current_user
+      .navbar.navbar-default.navbar-fixed-top
+        .container
+          .navbar-header
+            = link_to 'VideoShrimp', root_url, class: 'navbar-brand'
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to 'Browse videos', videos_path
+            %li
+              = link_to 'Upload video', new_video_path
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = current_user.email
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to 'Profile', current_user
+                %li
+                  = link_to 'Edit profile', edit_user_path(current_user)
+                %li.divider{:role => "separator"}
+                %li
+                  = link_to 'Log out', destroy_user_session_path, :method => :delete
+
+            %li#user-notifications.dropdown{"data-pn-auth-key": current_user.pn_auth_key, "data-pn-notification-channel": current_user.notification_channel}
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %span.glyphicon.glyphicon-bell
+              %ul.dropdown-menu
+
+    = yield

@@ -1,0 +1,9 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      %h2 Upload new video
+
+      = simple_form_for @video, html: { multipart: true } do |f|
+        = f.input :name
+        = f.input :video_file, as: :file
+        = f.button :submit, class: 'btn-primary', value: 'Upload Video'

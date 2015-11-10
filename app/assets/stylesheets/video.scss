@@ -1,0 +1,15 @@
+// Place all the styles related to the video controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.video-thumb{
+  .likes{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    padding: 5px;
+    color: #d9534f;
+    font-size: 20px;
+  }
+}

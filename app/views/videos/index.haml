@@ -1,0 +1,13 @@
+.container
+  .row
+    - @videos.each do |video|
+      .col-md-3.thumb.video-thumb{ 'data-video-id': video.id }
+        .likes
+          %span.likes-count= video.likes
+          %span.glyphicon.glyphicon-heart
+        = link_to video, class: 'thumbnail' do
+          = image_tag video.thumbnail.url(:medium_nr)
+  .row
+    .col-md-12
+      .pull-right
+        = link_to 'Upload new video', new_video_url, class: 'btn btn-primary'

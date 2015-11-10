@@ -1,0 +1,29 @@
+$ ->
+  if $("#user-notifications").length
+
+    auth_key = $("#user-notifications").attr("data-pn-auth-key")
+    notification_channel = $("#user-notifications").attr('data-pn-notification-channel')
+
+    window.pubnub = PUBNUB.init
+      subscribe_key: <%= Rails.application.secrets.pubnub_subscribe_key %>,
+      publish_key: <%= Rails.application.secrets.pubnub_publish_key %>,
+      auth_key: auth_key
+
+    window.pubnub.subscribe
+      channel: notification_channel,
+      callback: (msg) ->
+        console.log msg
+        return
+
+    pubnub.history
+        channel: notification_channel,
+        count: 10,
+        reverse: false,
+        callback: (msg) ->
+          for notification in msg[0]
+            switch notification.event
+              when 'published'
+                notification_html  = "<li><a href='/" + notification.scope + "/" + notification.id + "'>"
+                notification_html += "Your video " + notification.name + " has been published"
+                notification_html += "</a></li>"
+                $("#user-notifications .dropdown-menu").prepend notification_html

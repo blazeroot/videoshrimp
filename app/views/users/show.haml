@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-12
+      %h2= @user.email
+.container
+  .row
+    - @user.videos.each do |video|
+      .col-md-3.thumb.video-thumb{ 'data-video-id': video.id }
+        .likes
+          %span.likes-count= video.likes
+          %span.glyphicon.glyphicon-heart
+        = link_to video, class: 'thumbnail' do
+          = image_tag video.thumbnail.url(:medium_nr)
