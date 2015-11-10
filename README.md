@@ -710,7 +710,7 @@ As you can see, there's little difference between this and previous workers.
 ### Notifications on frontend
 Create two files in `app/assets/javascripts/`:
 
-`notifications.coffee`
+`notifications.js.coffee.erb`
 ```coffeescript
 $ ->
   if $("#user-notifications").length
@@ -728,9 +728,9 @@ $ ->
                       $("#user-notifications .dropdown-menu").prepend notification_html
 
     window.pubnub = PUBNUB.init
-        subscribe_key: <%= Rails.application.secrets.pubnub_subscribe_key %>,
-        publish_key: <%= Rails.application.secrets.pubnub_publish_key %>,
-        auth_key: auth_key
+          subscribe_key: "<%= Rails.application.secrets.pubnub_subscribe_key %>",
+          publish_key: "<%= Rails.application.secrets.pubnub_publish_key %>",
+          auth_key: auth_key
 
     window.pubnub.history
         channel: notification_channel,

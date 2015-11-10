@@ -5,8 +5,8 @@ $ ->
     notification_channel = $("#user-notifications").attr('data-pn-notification-channel')
 
     window.pubnub = PUBNUB.init
-      subscribe_key: <%= Rails.application.secrets.pubnub_subscribe_key %>,
-      publish_key: <%= Rails.application.secrets.pubnub_publish_key %>,
+      subscribe_key: "<%= Rails.application.secrets.pubnub_subscribe_key %>",
+      publish_key: "<%= Rails.application.secrets.pubnub_publish_key %>",
       auth_key: auth_key
 
     window.pubnub.subscribe
