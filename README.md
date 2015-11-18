@@ -532,18 +532,7 @@ Congratulations! You have done some stuff already!
 
 So, now we need to encode uploaded videos, show them to user and send notifications. Let's setup pubnub to do that.
 
-Head to [Pubnub website](pubnub.com) and create new account:
-![Home page](/Users/bazeroot/Desktop/home.png)
-![Creating new account](/Users/bazeroot/Desktop/home.png)
-
-After creating new account you should add new app and generate keys for these app:
-![Creating new application and keys](/Users/bazeroot/Desktop/home.png)
-
-We will use [Storeage & Playback](https://www.pubnub.com/products/stream-controller/) feature for notifications history and [Access Manager](https://www.pubnub.com/products/access-manager/) to make private notifications private.
-
-![Features](/Users/bazeroot/Desktop/home.png)
-
-![Keys](/Users/bazeroot/Desktop/home.png)
+Head to [Pubnub website](pubnub.com) and create new account. After creating new account you should add new app and generate keys for these app. We will use [Storeage & Playback](https://www.pubnub.com/products/stream-controller/) feature for notifications history and [Access Manager](https://www.pubnub.com/products/access-manager/) to make private notifications private.
 
 You will need to copy your keys to `config/secrets.yml` as `pubnub_subscribe_key`, `pubnub_publish_key`, `pubnub_secret_key` and you should create by yourself some unique `pubnub_auth_key` for server.
 
