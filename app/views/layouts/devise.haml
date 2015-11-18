@@ -6,6 +6,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{'data-no-turbolink': true}
-    .row
-      .col-md-4.col-md-offset-4
-        = yield
+    .container
+      .row
+        .col-md-4.col-md-offset-4
+          %h1.text-center VideoShrimp
+          = yield

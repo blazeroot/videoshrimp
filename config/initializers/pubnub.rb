@@ -1,3 +1,4 @@
+# Initialize pubnub client with our keys
 $pubnub = Pubnub.new(
     subscribe_key: Rails.application.secrets.pubnub_subscribe_key,
     publish_key: Rails.application.secrets.pubnub_publish_key,
@@ -5,6 +6,8 @@ $pubnub = Pubnub.new(
     auth_key: Rails.application.secrets.pubnub_auth_key
 )
 
+# As we have PAM enabled, we have to grant access to channels.
+# That grants read right to any channel that begins with 'video.' to everyone.
 $pubnub.grant(
     read: true,
     write: false,
@@ -14,6 +17,7 @@ $pubnub.grant(
     ttl: 0
 )
 
+# That grants read and write right to any channel that begins with 'video.' to this client.
 $pubnub.grant(
     read: true,
     write: true,
@@ -23,6 +27,7 @@ $pubnub.grant(
     ttl: 0
 )
 
+# That grants read and write right to any channel that begins with 'notifications.' to this client.
 $pubnub.grant(
     read: true,
     write: true,

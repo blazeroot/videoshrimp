@@ -1,6 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   for video in $('.video-full, .video-thumb')
     window.pubnub.subscribe
@@ -20,7 +17,3 @@ $ ->
             for likes in $("[data-video-id=" + id + "]").find('.likes-count')
               console.log('remove')
               $(likes).html(parseInt($(likes).html()) - 1)
-          else
-            console.log(msg)
-
-

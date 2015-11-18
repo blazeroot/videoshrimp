@@ -19,7 +19,3 @@
       %h1
         %span.likes-count= @video.likes
         %span.glyphicon.glyphicon-heart
-    .col-md-12
-      %hr
-      = link_to 'Like', video_like_path(@video), class: 'btn btn-success', remote: true
-      = link_to 'Dislike', video_dislike_path(@video), class: 'btn btn-danger', remote: true

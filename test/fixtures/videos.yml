@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  video_file: 
+  mp4_file: 
+  webm_file: 
+  ogg_file: 
+  thumbnail: 
+  published: false
+  likes: 1
+  user_id: 
+
+two:
+  name: MyString
+  video_file: 
+  mp4_file: 
+  webm_file: 
+  ogg_file: 
+  thumbnail: 
+  published: false
+  likes: 1
+  user_id: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107132328) do
+ActiveRecord::Schema.define(version: 20151118114447) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20151107132328) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "display_name"
     t.string   "pn_auth_key"
   end
 
@@ -35,11 +34,6 @@ ActiveRecord::Schema.define(version: 20151107132328) do
 
   create_table "videos", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
-    t.text     "video_data"
-    t.integer  "user_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
     t.string   "video_file_file_name"
     t.string   "video_file_content_type"
     t.integer  "video_file_file_size"
@@ -60,8 +54,11 @@ ActiveRecord::Schema.define(version: 20151107132328) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
-    t.boolean  "published",               default: false
+    t.boolean  "published"
     t.integer  "likes",                   default: 0
+    t.integer  "user_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"
