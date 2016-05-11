@@ -7,7 +7,7 @@ class CreateVideos < ActiveRecord::Migration
       t.attachment :webm_file
       t.attachment :ogg_file
       t.attachment :thumbnail
-      t.boolean :published
+      t.boolean :published, default: false
       t.integer :likes, default: 0
       t.references :user, index: true, foreign_key: true
 
